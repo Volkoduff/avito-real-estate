@@ -1,0 +1,40 @@
+@import "utils/mixins.scss";
+@import "utils/vars.scss";
+
+html  {
+  font-size: $mainFontSize;
+  color: $mainFontColor;
+  @media screen and (max-width: $desktopWidth) {
+    font-size: 13px;
+  }
+}
+
+*, *:before, *:after {box-sizing: border-box}
+
+h1 {
+  font-size: $mainTitleSize;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+  margin: 0;
+  padding: 15px 0 30px 0;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  max-width: $desktopWidth;
+
+  @media screen and (max-width: $desktopWidth){
+    max-width: $mdDesktopWidth;
+  }
+  @media screen and (max-width: $mdDesktopWidth){
+    max-width: $smDesktopWidth;
+  }
+  @media screen and (max-width: $smDesktopWidth){
+    max-width: $phoneWidth;
+  }
+  @media screen and (max-width: $phoneWidth){
+    max-width: $smPhoneWidth;
+  }
+}
