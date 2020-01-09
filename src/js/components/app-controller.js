@@ -1,7 +1,6 @@
 import API from './api';
-import Gallery from './main-list';
 import MainList from './main-list';
-import Comment from './comment';
+import Details from './details';
 import {render, unrender} from "./utils";
 
 const LOADING_TEXT = `Загрузка...`;
@@ -9,7 +8,7 @@ const END_POINT = `http://134.209.138.34/items`;
 const api = new API({endPoint: END_POINT});
 const header = document.querySelector(`.header`);
 const body = document.querySelector(`body`);
-
+const details = new Details();
 
 export default class appController {
     init() {
@@ -20,30 +19,25 @@ export default class appController {
                 this.mainList.init(listItems);
                 console.log(listItems)
             })
-            // .then(() => {
-            //     this._unRenderLoadingText();
-            // })
-            // .then(() => this._modalRenderInit())
+            .then(() => this._detailsRender())
     }
 
-    // _modalRenderInit() {
-    //     [...this.gallary.getElement().children]
-    //         .forEach((el) => el.addEventListener(`click`, (evt) => this._onClickRender(evt)))
-    // }
-    //
-    // _onClickRender(evt) {
-    //     const id = evt.target.id;
-    //     api.getComments(id)
-    //         .then((bigPhoto) => this._renderPhotoWithComments(bigPhoto, id));
-    // }
-    //
-    // _renderPhotoWithComments(data, id) {
-    //     body.classList.add(`hidden-overflow`);
-    //     modal.init(data);
-    //     render(header, modal.getElement());
-    //     this.form = modal.getElement().querySelector(`.form`);
-    //     this.form.addEventListener(`submit`, (evt) => this._onSubmit(evt, id))
-    // }
+    _detailsRender() {
+        [...this.mainList.getElement().children]
+            .forEach((el) => el.addEventListener(`click`, (evt) => this._onClickRender(evt)))
+    }
+
+    _onClickRender(evt) {
+        const id = evt.target.id;
+        api.getDetailedInfo(id)
+            .then((detailedInfo) => this._renderDetails(detailedInfo));
+    }
+
+    _renderDetails(data) {
+        const detailsSection = document.querySelector(`.main-section-details`);
+        details.init(data);
+        render(detailsSection, details.getElement());
+    }
     //
     // _onSubmit(evt, id) {
     //     evt.preventDefault();

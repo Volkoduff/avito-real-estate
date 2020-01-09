@@ -4,7 +4,7 @@ export default class BaseComponent {
   constructor() {
     this._element = null;
     if (new.target === BaseComponent) {
-      throw new Error(`Can't instantiate AbstractComponent, only concrete one.`);
+      throw new Error(`Can't instantiate BaseComponent, only concrete one.`);
     }
   }
 

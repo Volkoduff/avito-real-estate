@@ -8,12 +8,18 @@ export default class MainList extends BaseComponent {
         super();
     }
 
-    init(photos) {
-        this.photos = photos;
+    init(mainList) {
+        this.mainList = mainList;
         render(mainTitle, this.getElement());
     }
 
     getTemplate() {
-        return `<div class="gallery">${this.photos.map((photo) => `<img src="${photo.url}" id="${photo.id}" alt="Photo id№${photo.id}">`).join(``)}</div>`
+        return `<div class="gallery">
+${this.mainList.map((listElement) => 
+    `<h2>${listElement.title}</h2>
+    <p class="address">${listElement.address}</p>
+    <a href="details.html"><img src="${listElement.previewImage}" data-id="${listElement.id}" alt="Photo id№${listElement.id}"></a>
+    <p>Цена: ${listElement.price}</p>`)
+        .join(``)}</div>`
     }
 }

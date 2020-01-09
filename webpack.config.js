@@ -51,7 +51,11 @@ module.exports = {
     },
     devtool: `source-map`,
     devServer: {
-        overlay: true
+        overlay: true,
+        contentBase: path.join(__dirname, `dist`),
+        publicPath: 'http://localhost:8001/',
+        compress: true,
+        watchContentBase: true,
     },
     plugins: [
         new MiniCSSExtractPlugin({

@@ -1,6 +1,6 @@
 import BaseComponent from './base-component';
 
-export default class Comment extends BaseComponent {
+export default class Details extends BaseComponent {
     constructor({date, comment}) {
         super();
         this.date = date;

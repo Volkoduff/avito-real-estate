@@ -22,24 +22,9 @@ export default class API {
       .then(toJSON)
   }
 
-  getComments(id) {
+  getDetailedInfo(id) {
     return this._load({url: `${id}`})
       .then(toJSON)
-  }
-
-  addNewComment(id, data) {
-    return this._load({
-      url: `${id}/comments`,
-      method: Method.POST,
-      body: JSON.stringify(data),
-      headers: new Headers({'Content-Type': `application/json`})
-    })
-        // .then(toJSON)
-        .then((response) => {
-          if (response.status === 204) {
-            return response.statusText;
-          }
-        })
   }
 
   _load({url, method = Method.GET, body = null, headers = new Headers()}) {
