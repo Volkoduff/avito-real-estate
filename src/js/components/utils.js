@@ -35,8 +35,3 @@ export const render = (container, element, position = Position.END) => {
   }
 };
 
-export const unrender = (element) => {
-  if (element) {
-    element.remove();
-  }
-};

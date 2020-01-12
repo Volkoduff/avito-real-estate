@@ -1,5 +1,5 @@
 const path = require(`path`);
-const MiniCSSExtractPlugin = require(`mini-css-extract-plugin`)
+const MiniCSSExtractPlugin = require(`mini-css-extract-plugin`);
 
 module.exports = {
     entry: {
@@ -52,10 +52,6 @@ module.exports = {
     devtool: `source-map`,
     devServer: {
         overlay: true,
-        contentBase: path.join(__dirname, `dist`),
-        publicPath: 'http://localhost:8001/',
-        compress: true,
-        watchContentBase: true,
     },
     plugins: [
         new MiniCSSExtractPlugin({

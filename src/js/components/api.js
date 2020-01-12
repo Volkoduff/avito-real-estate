@@ -18,12 +18,12 @@ export default class API {
   }
 
   getList() {
-    return this._load({url: ``})
+    return this._load({url: `items`})
       .then(toJSON)
   }
 
   getDetailedInfo(id) {
-    return this._load({url: `${id}`})
+    return this._load({url: `item/${id}`})
       .then(toJSON)
   }
 

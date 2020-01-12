@@ -2,24 +2,36 @@
 @import "utils/vars.scss";
 
 html  {
+  font-family: $mainFont;
   font-size: $mainFontSize;
   color: $mainFontColor;
   @media screen and (max-width: $desktopWidth) {
     font-size: 13px;
   }
 }
-
 *, *:before, *:after {box-sizing: border-box}
 
+h1, h2, h3, h4 {
+  margin: 0;
+  padding: 0;
+}
+img {
+  max-width: 100%;
+  box-shadow: $imgShadow;
+}
 h1 {
   font-size: $mainTitleSize;
   text-transform: uppercase;
   font-weight: 700;
   text-align: center;
-  margin: 0;
   padding: 15px 0 30px 0;
 }
-
+h2 {
+  font-size: $averageTitleSize;
+}
+body {
+  background-color: $backgroundColor;
+}
 .container {
   width: 100%;
   margin: 0 auto;
@@ -37,4 +49,71 @@ h1 {
   @media screen and (max-width: $phoneWidth){
     max-width: $smPhoneWidth;
   }
+}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+.gallery h2 {
+  padding: 15px 0;
+}
+.gallery-item-wrap {
+  overflow: hidden;
+  width: 33%;
+  text-align: center;
+  padding: 16px;
+  @media screen and (max-width: $smDesktopWidth){
+    width: auto;
+  }
+}
+.gallery-item-wrap a {
+  display: block;
+}
+.detailed-info {
+  padding: 0 170px;
+  @media screen and (max-width: $smDesktopWidth){
+    padding: 0 40px;
+  }
+  @media screen and (max-width: $phoneWidth){
+    padding: 0 0;
+  }
+}
+.details-title {
+  text-align: center;
+  @media screen and (max-width: $phoneWidth){
+    padding: 0;
+  }
+}
+.description-text {
+  font-size: $detailsFontSize;
+  color: $mainFontColor;
+}
+.detailed-photos {
+  position: relative;
+  padding: 60px 0;
+  text-align: center;
+}
+.arrow {
+  cursor: pointer;
+  transition: .2s ease-in-out;
+  outline: none;
+  background-color: $mainColor;
+  border: 1px solid $mainColor;
+  padding: 5px 8px;
+  color: $backgroundColor;
+  top: 10px;
+  border-radius: 3px;
+}
+.arrow:hover {
+  color: $defaultColor;
+}
+.left-arrow {
+  position: absolute;
+  left: 10%;
+}
+.right-arrow {
+  position: absolute;
+  right: 10%;
 }
